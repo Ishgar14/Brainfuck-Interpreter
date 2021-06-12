@@ -64,9 +64,7 @@ def main(filename: str = None) -> None:
     global lines, position
 
     if filename is None:
-        print("Type some file name in command line")
-        print("In this format:\n\npython buck.py (filename).bf\n")
-        print("For example: python buck.py sample.bf")
+        filename = 'bf-interpreter/first.bf'
 
     with open(filename, 'r') as f:
         lines = f.read()
@@ -83,8 +81,10 @@ def main(filename: str = None) -> None:
 
 
 if __name__ == '__main__':
+    print("The commandline is\n", argv)
+    #  python .\bf-interpreter\buck.py .\bf-interpreter\first.bf
+
     if len(argv) == 2:
         main(argv[1])
     else:
-        main('sample.bf')
-    print()
+        main()
