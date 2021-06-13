@@ -4,7 +4,6 @@ from typing import List
 lines: str = None
 tape: List[int] = [0 for _ in range(100)]
 head: int = 0
-position: int = 0
 
 
 def increment() -> None:
@@ -23,10 +22,6 @@ def move_right() -> None:
 def move_left() -> None:
     global head
     head -= 1
-
-
-def loop() -> None:
-    global head
 
 
 def display() -> None:
@@ -61,7 +56,7 @@ def execute(ins: str, pos: int) -> None:
 
 
 def main(filename: str = None) -> None:
-    global lines, position
+    global lines
 
     if filename is None:
         filename = 'bf-interpreter/first.bf'
@@ -81,10 +76,4 @@ def main(filename: str = None) -> None:
 
 
 if __name__ == '__main__':
-    print("The commandline is\n", argv)
-    #  python .\bf-interpreter\buck.py .\bf-interpreter\first.bf
-
-    if len(argv) == 2:
-        main(argv[1])
-    else:
-        main()
+    main(argv[1] if len(argv) == 2 else "sample.bf")
