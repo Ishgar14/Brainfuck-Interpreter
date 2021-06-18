@@ -2,7 +2,7 @@ from sys import argv
 from typing import List
 
 lines: str = None
-tape: List[int] = [0 for _ in range(100)]
+tape: List[int] = [0 for _ in range(10)]
 head: int = 0
 
 
@@ -17,11 +17,18 @@ def decrement() -> None:
 def move_right() -> None:
     global head
     head += 1
+    if head == len(tape):
+        tape.append(0)
 
 
 def move_left() -> None:
     global head
     head -= 1
+
+    if head < 0:
+        temp = [0]
+        temp.extend(tape)
+        tape = temp
 
 
 def display() -> None:
